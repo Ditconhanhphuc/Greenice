@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'login.dart';
+import 'initScreen.dart';
+import 'intro1.dart';
+import 'intro2.dart';
+import 'intro3.dart';
+import 'intro4.dart';
 
 void main() {
   runApp(MyApp());
@@ -32,7 +37,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: LoginScreen(),  // Set the login screen as the home screen
+      home: InitScreen(),  // Set the login screen as the home screen
     );
   }
 }
