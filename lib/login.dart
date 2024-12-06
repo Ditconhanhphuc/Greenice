@@ -4,39 +4,90 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Center(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/signInBg.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start, // Căn chỉnh nội dung từ trên xuống
             children: [
-              Image.asset('assets/green_logo.png', height: 100), // Add your logo here
-              SizedBox(height: 20),
-              Text(
-                'GREENICE',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+              SizedBox(height: 40), // Khoảng cách từ trên cùng đến logo
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset('assets/green_logo.png', height: 100),
+                  SizedBox(width: 20),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 25, left: 0), // Lùi chữ xuống 25 điểm
+                    child: Text(
+                      'GREENICE',
+                      style: TextStyle(
+                        fontSize: 24,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 14),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+                child: Text(
+                  'Greenice chào mừng bạn đến với cộng đồng Xanh, hãy cùng nhau lan tỏa và hành động Xanh nhé',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 17,
+                  ),
                 ),
               ),
-              SizedBox(height: 10),
-              Text(
-                'Greenice chào mừng bạn đến với cộng đồng Xanh, hãy cùng nhau lan tỏa và hành động Xanh nhé',
-                textAlign: TextAlign.center,
-              ),
               SizedBox(height: 40),
-              ElevatedButton(
-                onPressed: () {
-                  // Handle login with phone
-                },
-                child: Text('Đăng nhập bằng số điện thoại'),
+              Container(
+                width: double.infinity, // Để nút chiếm toàn bộ chiều rộng của phần tử cha
+                padding: EdgeInsets.symmetric(horizontal: 30), // Padding bên trái và bên phải của nút
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFFD9D9D9), // Màu nền của nút
+                    foregroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero, // Hình chữ nhật không bo góc
+                    ),
+                    padding: EdgeInsets.symmetric(vertical: 15), // Padding dọc của nút
+                  ),
+                  onPressed: () {
+                    // Handle login with phone
+                  },
+                  child: Text(
+                    'Đăng nhập bằng số điện thoại',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
               ),
               SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  // Handle login with email
-                },
-                child: Text('Đăng nhập bằng số email'),
+              Container(
+                width: double.infinity,
+                padding: EdgeInsets.symmetric(horizontal: 30),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFFD9D9D9), // Màu nền của nút
+                    foregroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero, // Hình chữ nhật không bo góc
+                    ),
+                    padding: EdgeInsets.symmetric(vertical: 15), // Padding dọc của nút
+                  ),
+                  onPressed: () {
+                    // Handle login with email
+                  },
+                  child: Text(
+                    'Đăng nhập bằng email',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
               ),
             ],
           ),
