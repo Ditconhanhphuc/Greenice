@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
-class PersonalInfoScreen extends StatelessWidget {
+class PersonalInfoScreen extends StatefulWidget {
+  @override
+  _PersonalInfoScreenState createState() => _PersonalInfoScreenState();
+}
+
+class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
+  bool isChecked = false; // Trạng thái của checkbox
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +42,7 @@ class PersonalInfoScreen extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 60.0, vertical: 10.0),
+                  padding: const EdgeInsets.only(top: 10, bottom: 10, right: 60, left: 60),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
@@ -54,8 +61,12 @@ class PersonalInfoScreen extends StatelessWidget {
                       Row(
                         children: [
                           Checkbox(
-                            value: false,
-                            onChanged: (bool? value) {},
+                            value: isChecked,
+                            onChanged: (bool? value) {
+                              setState(() {
+                                isChecked = value!;
+                              });
+                            },
                           ),
                           Expanded(
                             child: RichText(
@@ -84,6 +95,23 @@ class PersonalInfoScreen extends StatelessWidget {
                             ),
                           ),
                         ],
+                      ),
+                      // Hoàn tất Button
+                      SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: isChecked ? () {
+                          // Thực hiện hành động khi bấm nút "Hoàn tất"
+                          print("Hoàn tất đã được nhấn");
+                        } : null, // Disable the button if checkbox is not checked
+                        child: Text(
+                          "Hoàn tất",
+                          style: TextStyle(color: Colors.black), // Set text color to black
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(100, 50), // Set exact width and height
+                          backgroundColor: Color(0xFF8FCEA3), // Button background color
+                          padding: EdgeInsets.only(left: 100, right: 100),
+                        ),
                       ),
                     ],
                   ),
@@ -114,14 +142,12 @@ class PersonalInfoScreen extends StatelessWidget {
     );
   }
 
-  // Helper to build the avatar selector
   Widget _buildAvatarSelector() {
     return Padding(
-      // alignment: Alignment.start, // Ensures the container is centered horizontally
-      padding: const EdgeInsets.only(left: 16.0),
+      padding: const EdgeInsets.only(right: 150),
       child: Container(
-        width: 120, // Correct width
-        height: 120, // Correct height
+        width: 120, // Fixed width
+        height: 120, // Fixed height
         decoration: BoxDecoration(
           border: Border.all(color: Colors.black),
           borderRadius: BorderRadius.circular(8),
@@ -134,10 +160,10 @@ class PersonalInfoScreen extends StatelessWidget {
               size: 50,
               color: Colors.black,
             ),
-            SizedBox(height: 8), // Space between icon and text
+            SizedBox(height: 8),
             Text(
               "+ Thêm ảnh từ thư viện",
-              style: TextStyle(color: Colors.black, fontSize: 10), // Smaller font size
+              style: TextStyle(color: Colors.black, fontSize: 10),
               textAlign: TextAlign.center,
             ),
           ],
