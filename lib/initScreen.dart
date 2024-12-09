@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import 'login.dart';
+import 'package:my_flutter_app/intro/intro_page.dart';
 
 class InitScreen extends StatelessWidget {
+  const InitScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     // Lấy chiều cao của màn hình
     double screenHeight = MediaQuery.of(context).size.height;
 
     // Chiều cao của nút "BẮT ĐẦU"
-    double buttonHeight = 34.0 * 2; // Padding trong Container của button (vertical: 34)
+    double buttonHeight =
+        34.0 * 2; // Padding trong Container của button (vertical: 34)
 
     return Scaffold(
       body: Container(
@@ -18,9 +21,12 @@ class InitScreen extends StatelessWidget {
             // Nội dung chính: logo và mô tả
             Expanded(
               child: Padding(
-                padding: EdgeInsets.only(bottom: buttonHeight), // Thêm khoảng trống dưới cùng để trừ đi chiều cao của button
+                padding: EdgeInsets.only(
+                    bottom:
+                        buttonHeight), // Thêm khoảng trống dưới cùng để trừ đi chiều cao của button
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center, // Căn giữa theo chiều dọc
+                  mainAxisAlignment:
+                      MainAxisAlignment.center, // Căn giữa theo chiều dọc
                   children: [
                     // Logo (replace with your actual asset)
                     Image.asset(
@@ -28,15 +34,15 @@ class InitScreen extends StatelessWidget {
                       height: 257,
                       width: 280,
                     ),
-                    SizedBox(height: 40),
-                    Text(
+                    const SizedBox(height: 40),
+                    const Text(
                       'GREENICE',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
@@ -52,16 +58,16 @@ class InitScreen extends StatelessWidget {
             // Nút "Bắt đầu" sẽ nằm ở dưới cùng
             Container(
               width: double.infinity,
-              color: Color(0xFF8FCEA3), // Button background color
+              color: const Color(0xFF8FCEA3), // Button background color
               padding: const EdgeInsets.symmetric(vertical: 34),
               child: TextButton(
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => LoginScreen()),
+                    MaterialPageRoute(builder: (context) => IntroPage()),
                   );
                 },
-                child: Text(
+                child: const Text(
                   'BẮT ĐẦU',
                   style: TextStyle(
                     fontSize: 18,

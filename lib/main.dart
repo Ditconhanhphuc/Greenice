@@ -1,22 +1,31 @@
 import 'package:flutter/material.dart';
-
-import 'login.dart';
-import 'initScreen.dart';
-import 'intro1.dart';
-import 'intro2.dart';
-import 'intro3.dart';
-import 'intro4.dart';
-import 'home.dart';
-import 'location.dart';
-// import 'locationDetail.dart';
-import 'inputInfor.dart';
+import 'package:my_flutter_app/home.dart';
+import 'package:my_flutter_app/initScreen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+//
+//   // This widget is the root of your application.
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Flutter Demo',
+//       theme: ThemeData(
+//         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+//         useMaterial3: true,
+//       ),
+//       home: const Login(),
+//     );
+//   }
+// }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,11 +33,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: PersonalInfoScreen(),  // Set the login screen as the home screen
+      home: const InitScreen(), // Set the login screen as the home screen
     );
   }
 }
-
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
