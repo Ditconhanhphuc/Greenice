@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,26 +23,27 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
 
   Widget _buildTopBar() {
     return ClipRRect(
-      borderRadius: BorderRadius.only(
+      borderRadius: const BorderRadius.only(
         bottomLeft: Radius.circular(20),
         bottomRight: Radius.circular(20),
       ),
       child: Container(
-        color: Color(0xFF7CB98D), // Sử dụng mã màu HEX
-        padding: EdgeInsets.only(top: 70, bottom: 30), // Di chuyển biểu tượng xuống dưới
+        color: const Color(0xFF7CB98D), // Sử dụng mã màu HEX
+        padding: const EdgeInsets.only(
+            top: 70, bottom: 30), // Di chuyển biểu tượng xuống dưới
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center, // Giảm khoảng cách giữa các icon
+          mainAxisAlignment:
+              MainAxisAlignment.center, // Giảm khoảng cách giữa các icon
           children: [
             _buildIconWithBackground('assets/topIcon1.png', 'Đổi quà'),
-            SizedBox(width: 34), // Thêm khoảng cách nhỏ giữa các icon
+            const SizedBox(width: 34), // Thêm khoảng cách nhỏ giữa các icon
             _buildIconWithBackground('assets/topIcon2.png', 'Địa điểm'),
-            SizedBox(width: 34), // Thêm khoảng cách nhỏ giữa các icon
+            const SizedBox(width: 34), // Thêm khoảng cách nhỏ giữa các icon
             _buildIconWithBackground('assets/topIcon3.png', 'Điểm Xanh'),
           ],
         ),
@@ -62,7 +65,7 @@ class HomeScreen extends StatelessWidget {
               BoxShadow(
                 color: Colors.grey.withOpacity(0.3),
                 blurRadius: 5,
-                offset: Offset(0, 3),
+                offset: const Offset(0, 3),
               ),
             ],
           ),
@@ -74,10 +77,10 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Text(
           label,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w500,
             color: Colors.white, // Đổi màu chữ thành trắng
@@ -92,8 +95,12 @@ class HomeScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Tiêu đề "Dashboard"
-        Padding(
-          padding: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 0), // Căn lề ngang cho tiêu đề
+        const Padding(
+          padding: EdgeInsets.only(
+              left: 20,
+              right: 20,
+              top: 20,
+              bottom: 0), // Căn lề ngang cho tiêu đề
           child: Text(
             'Dashboard',
             style: TextStyle(
@@ -103,19 +110,21 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 10), // Khoảng cách giữa tiêu đề và box lớn
+        const SizedBox(height: 10), // Khoảng cách giữa tiêu đề và box lớn
         // Box lớn
         Container(
-          margin: EdgeInsets.symmetric(vertical: 0, horizontal: 20), // Thêm margin ngang
-          padding: EdgeInsets.only(left: 30, right: 30, top: 14, bottom: 8),
+          margin: const EdgeInsets.symmetric(
+              vertical: 0, horizontal: 20), // Thêm margin ngang
+          padding:
+              const EdgeInsets.only(left: 30, right: 30, top: 14, bottom: 8),
           decoration: BoxDecoration(
-            color: Color(0xFFBAEBC8),
+            color: const Color(0xFFBAEBC8),
             borderRadius: BorderRadius.circular(10),
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.2),
                 blurRadius: 10,
-                offset: Offset(0, 5),
+                offset: const Offset(0, 5),
               ),
             ],
           ),
@@ -126,7 +135,8 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   // Dòng chữ PET
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 44, vertical: 2),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 44, vertical: 2),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(20),
@@ -134,11 +144,11 @@ class HomeScreen extends StatelessWidget {
                         BoxShadow(
                           color: Colors.grey.withOpacity(0.3),
                           blurRadius: 5,
-                          offset: Offset(0, 3),
+                          offset: const Offset(0, 3),
                         ),
                       ],
                     ),
-                    child: Text(
+                    child: const Text(
                       'PET',
                       style: TextStyle(
                         color: Colors.black,
@@ -147,13 +157,13 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 8), // Khoảng cách giữa chữ và hình
+                  const SizedBox(height: 8), // Khoảng cách giữa chữ và hình
                   // Hình ảnh
                   Container(
                     width: 120,
                     height: 120,
                     decoration: BoxDecoration(
-                      color: Color(0xFFBAEBC8), // Màu nền nhẹ nhàng
+                      color: const Color(0xFFBAEBC8), // Màu nền nhẹ nhàng
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Image.asset(
@@ -163,14 +173,16 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(width: 30), // Khoảng cách giữa phần bên trái và nội dung bên phải
+              const SizedBox(
+                  width:
+                      30), // Khoảng cách giữa phần bên trái và nội dung bên phải
               // Nội dung bên phải
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _buildDashboardItem('assets/increase.png', '1000', 'kg'),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     _buildDashboardItem('assets/decrease.png', '1800', 'kg'),
                   ],
                 ),
@@ -187,25 +199,31 @@ class HomeScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         // Icon
-        Container(
+        SizedBox(
           width: 40,
           height: 40,
           child: Center(
             child: Image.asset(assetPath, width: 32, height: 32),
           ),
         ),
-        SizedBox(width: 8),
+        const SizedBox(width: 8),
         // Text
         Row(
           children: [
             Text(
               value,
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.normal, color: Colors.black),
+              style: const TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.normal,
+                  color: Colors.black),
             ),
-            SizedBox(width: 4),
+            const SizedBox(width: 4),
             Text(
               unit,
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.normal, color: Colors.black),
+              style: const TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.normal,
+                  color: Colors.black),
             ),
           ],
         ),
@@ -215,17 +233,20 @@ class HomeScreen extends StatelessWidget {
 
   Widget _buildKnowledgeSection() {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
-      padding: EdgeInsets.symmetric(horizontal: 20),
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Tiêu đề
-          Text(
+          const Text(
             'Kiến Thức & Giáo Dục',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: Color(0xFF4D5350)),
+            style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.normal,
+                color: Color(0xFF4D5350)),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           // Box hình vuông
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -250,7 +271,7 @@ class HomeScreen extends StatelessWidget {
           BoxShadow(
             color: Colors.grey.withOpacity(0.3),
             blurRadius: 5,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
       ),
@@ -266,12 +287,12 @@ class HomeScreen extends StatelessWidget {
 
   Widget _buildNewsSection() {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Dòng tiêu đề "Tin Tức & Sự Kiện"
-          Text(
+          const Text(
             'Tin Tức & Sự Kiện',
             style: TextStyle(
               fontSize: 16,
@@ -279,7 +300,7 @@ class HomeScreen extends StatelessWidget {
               color: Color(0xFF4D5350),
             ),
           ),
-          SizedBox(height: 10), // Khoảng cách giữa tiêu đề và hình ảnh
+          const SizedBox(height: 10), // Khoảng cách giữa tiêu đề và hình ảnh
           // Container chứa hình ảnh
           Container(
             height: 200, // Chiều cao cố định cho hình ảnh
@@ -294,38 +315,6 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-
-  // Widget _buildBottomNavigationBar() {
-  //   return BottomNavigationBar(
-  //     items: [
-  //       BottomNavigationBarItem(
-  //         icon: Icon(Icons.home),
-  //         label: 'Trang chủ',
-  //       ),
-  //       BottomNavigationBarItem(
-  //         icon: Icon(Icons.star),
-  //         label: 'Thành tích',
-  //       ),
-  //       BottomNavigationBarItem(
-  //         icon: Icon(Icons.settings),
-  //         label: 'Cài đặt',
-  //       ),
-  //     ],
-  //     onTap: (index) {
-  //       // Handle navigation tap
-  //     },
-  //   );
-  Widget _buildBottomNavigationBar() {
-    // Implement your bottom navigation bar here
-    return BottomNavigationBar(
-      items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-        BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-        BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: 'Profile'),
-      ],
     );
   }
 }
