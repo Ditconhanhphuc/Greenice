@@ -22,8 +22,18 @@ class _MainPageState extends State<MainPage> {
   final ValueNotifier<int> index = ValueNotifier<int>(0);
   @override
   void initState() {
-    // TODO: implement initState
+    controller.addListener(
+      () {
+        index.value = controller.index;
+      },
+    );
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -40,7 +50,7 @@ class _MainPageState extends State<MainPage> {
       itemCount: 5,
       navBarHeight: 80,
       controller: controller,
-      handleAndroidBackButtonPress: false,
+      handleAndroidBackButtonPress: true,
       backgroundColor: const Color(0xffE6E6E6),
       customWidget: ValueListenableBuilder(
         valueListenable: index,
