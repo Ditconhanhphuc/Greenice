@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_flutter_app/detail_coupons_page.dart';
+import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class CouponsPage extends StatelessWidget {
   const CouponsPage({super.key});
@@ -71,11 +73,112 @@ class CouponsPage extends StatelessWidget {
                                 const SizedBox(
                               height: 8,
                             ),
-                            itemBuilder: (context, index) => Container(
+                            itemBuilder: (context, index) => GestureDetector(
+                              onTap: () {
+                                PersistentNavBarNavigator.pushNewScreen(
+                                  context,
+                                  screen: const DetailCouponsPage(
+                                    canGet: false,
+                                    price: 'VNĐ50.000',
+                                  ),
+                                  withNavBar:
+                                      true, // OPTIONAL VALUE. True by default.
+                                  pageTransitionAnimation:
+                                      PageTransitionAnimation.cupertino,
+                                );
+                              },
+                              child: Container(
+                                height: 112,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: const Color(0xffFFF4C9),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        offset: const Offset(0, 2),
+                                        spreadRadius: 1,
+                                        blurRadius: 2,
+                                        color: Colors.black.withOpacity(
+                                          0.2,
+                                        ),
+                                      )
+                                    ]),
+                                child: Row(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 16,
+                                      ),
+                                      child: Image.asset(
+                                          'assets/voucher_logo.png'),
+                                    ),
+                                    const VerticalDivider(
+                                      color: Colors.black,
+                                    ),
+                                    const Expanded(
+                                        child: Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'VNĐ50.000',
+                                            style: TextStyle(
+                                              fontSize: 28,
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
+                                          Text(
+                                            'HSD: 27/09-02/10/2024',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          Align(
+                                            alignment: Alignment.centerRight,
+                                            child: Text(
+                                              'Điều kiện',
+                                              style: TextStyle(
+                                                decoration:
+                                                    TextDecoration.underline,
+                                                fontSize: 16,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ))
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          const Text(
+                            'Voucher có thể đổi:',
+                            style:
+                                TextStyle(decoration: TextDecoration.underline),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              PersistentNavBarNavigator.pushNewScreen(
+                                context,
+                                screen: const DetailCouponsPage(
+                                  price: 'VNĐ150.000',
+                                ),
+                                withNavBar:
+                                    true, // OPTIONAL VALUE. True by default.
+                                pageTransitionAnimation:
+                                    PageTransitionAnimation.cupertino,
+                              );
+                            },
+                            child: Container(
                               height: 112,
+                              margin: const EdgeInsets.symmetric(vertical: 8),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
-                                  color: const Color(0xffFFF4C9),
+                                  color: const Color(0xffEBD19D),
                                   boxShadow: [
                                     BoxShadow(
                                       offset: const Offset(0, 2),
@@ -108,7 +211,7 @@ class CouponsPage extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          ' VNĐ50.000',
+                                          'VNĐ150.000',
                                           style: TextStyle(
                                             fontSize: 28,
                                             fontWeight: FontWeight.w700,
@@ -123,7 +226,7 @@ class CouponsPage extends StatelessWidget {
                                         Align(
                                           alignment: Alignment.centerRight,
                                           child: Text(
-                                            'Điều kiện',
+                                            'Đổi ngay',
                                             style: TextStyle(
                                               decoration:
                                                   TextDecoration.underline,
@@ -136,76 +239,6 @@ class CouponsPage extends StatelessWidget {
                                   ))
                                 ],
                               ),
-                            ),
-                          ),
-                          const Text(
-                            'Voucher có thể đổi:',
-                            style:
-                                TextStyle(decoration: TextDecoration.underline),
-                          ),
-                          Container(
-                            height: 112,
-                            margin: const EdgeInsets.symmetric(vertical: 8),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color: const Color(0xffEBD19D),
-                                boxShadow: [
-                                  BoxShadow(
-                                    offset: const Offset(0, 2),
-                                    spreadRadius: 1,
-                                    blurRadius: 2,
-                                    color: Colors.black.withOpacity(
-                                      0.2,
-                                    ),
-                                  )
-                                ]),
-                            child: Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 16,
-                                  ),
-                                  child: Image.asset('assets/voucher_logo.png'),
-                                ),
-                                const VerticalDivider(
-                                  color: Colors.black,
-                                ),
-                                const Expanded(
-                                    child: Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        ' VNĐ150.000',
-                                        style: TextStyle(
-                                          fontSize: 28,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
-                                      Text(
-                                        'HSD: 27/09-02/10/2024',
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment: Alignment.centerRight,
-                                        child: Text(
-                                          'Đổi ngay',
-                                          style: TextStyle(
-                                            decoration:
-                                                TextDecoration.underline,
-                                            fontSize: 16,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ))
-                              ],
                             ),
                           ),
                           const Text(
