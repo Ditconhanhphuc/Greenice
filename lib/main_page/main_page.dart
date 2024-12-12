@@ -17,9 +17,9 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   final PersistentTabController controller =
-      PersistentTabController(initialIndex: 0);
+      PersistentTabController(initialIndex: 2);
 
-  final ValueNotifier<int> index = ValueNotifier<int>(0);
+  final ValueNotifier<int> index = ValueNotifier<int>(2);
   @override
   void initState() {
     controller.addListener(
@@ -43,7 +43,10 @@ class _MainPageState extends State<MainPage> {
       screens: [
         const CustomNavBarScreen(screen: CouponsPage()),
         CustomNavBarScreen(screen: LocationListScreen()),
-        const CustomNavBarScreen(screen: HomeScreen()),
+        CustomNavBarScreen(
+            screen: HomeScreen(
+          controller: controller,
+        )),
         CustomNavBarScreen(screen: ContributeTab()),
         CustomNavBarScreen(screen: ContributeTab()),
       ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/main_page/main_page.dart';
+import 'package:my_flutter_app/login_page/login_email_page.dart';
+import 'package:my_flutter_app/login_page/login_phone_page.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -69,8 +70,8 @@ class LoginScreen extends StatelessWidget {
                   ),
                   onPressed: () {
                     // Handle login with phone
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => const MainPage(),
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => LoginPhonePage(),
                     ));
                   },
                   child: const Text(
@@ -96,8 +97,8 @@ class LoginScreen extends StatelessWidget {
                   ),
                   onPressed: () {
                     // Handle login with email
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => const MainPage(),
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => LoginEmailPage(),
                     ));
                   },
                   child: const Text(
