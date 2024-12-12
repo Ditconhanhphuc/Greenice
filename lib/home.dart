@@ -1,7 +1,14 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:my_flutter_app/event_detail_page.dart';
+import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  final PersistentTabController controller;
+  const HomeScreen({
+    super.key,
+    required this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -10,13 +17,13 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             // Top bar with icons
-            _buildTopBar(),
+            _buildTopBar(context),
 
             // Dashboard Section
             _buildDashboardSection(),
 
             // Knowledge & Education Section
-            _buildKnowledgeSection(),
+            _buildKnowledgeSection(context),
 
             // News & Events Section
             _buildNewsSection(),
@@ -26,7 +33,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildTopBar() {
+  Widget _buildTopBar(BuildContext context) {
     return ClipRRect(
       borderRadius: const BorderRadius.only(
         bottomLeft: Radius.circular(20),
@@ -40,18 +47,37 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment:
               MainAxisAlignment.center, // Giảm khoảng cách giữa các icon
           children: [
-            _buildIconWithBackground('assets/topIcon1.png', 'Đổi quà'),
+            GestureDetector(
+                onTap: () {
+                  controller.jumpToTab(0);
+                },
+                child:
+                    _buildIconWithBackground('assets/topIcon1.png', 'Đổi quà')),
             const SizedBox(width: 34), // Thêm khoảng cách nhỏ giữa các icon
-            _buildIconWithBackground('assets/topIcon2.png', 'Địa điểm'),
+            GestureDetector(
+              onTap: () {
+                controller.jumpToTab(1);
+              },
+              child:
+                  _buildIconWithBackground('assets/topIcon2.png', 'Địa điểm'),
+            ),
             const SizedBox(width: 34), // Thêm khoảng cách nhỏ giữa các icon
-            _buildIconWithBackground('assets/topIcon3.png', 'Điểm Xanh'),
+            GestureDetector(
+                onTap: () {
+                  controller.jumpToTab(3);
+                },
+                child: _buildIconWithBackground(
+                    'assets/topIcon3.png', 'Điểm Xanh')),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildIconWithBackground(String assetPath, String label) {
+  Widget _buildIconWithBackground(
+    String assetPath,
+    String label,
+  ) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -231,7 +257,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildKnowledgeSection() {
+  Widget _buildKnowledgeSection(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10),
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -251,8 +277,8 @@ class HomeScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildImageBox('assets/home2.png'),
-              _buildImageBox('assets/home2.png'),
+              _buildImageBox('assets/home2.png', context),
+              _buildImageBox('assets/home2.png', context),
             ],
           ),
         ],
@@ -260,26 +286,36 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildImageBox(String imagePath) {
-    return Container(
-      width: 180,
-      height: 180,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            blurRadius: 5,
-            offset: const Offset(0, 3),
+  Widget _buildImageBox(String imagePath, BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        PersistentNavBarNavigator.pushNewScreen(
+          context,
+          screen: const EventDetailPage(),
+          withNavBar: false, // OPTIONAL VALUE. True by default.
+          pageTransitionAnimation: PageTransitionAnimation.cupertino,
+        );
+      },
+      child: Container(
+        width: 180,
+        height: 180,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.3),
+              blurRadius: 5,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: Image.asset(
+            imagePath,
+            fit: BoxFit.cover,
           ),
-        ],
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(10),
-        child: Image.asset(
-          imagePath,
-          fit: BoxFit.cover,
         ),
       ),
     );
