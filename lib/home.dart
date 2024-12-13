@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:my_flutter_app/event_detail_page.dart';
+import 'package:my_flutter_app/green_point_page.dart';
+import 'package:my_flutter_app/location.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -56,7 +58,11 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(width: 34), // Thêm khoảng cách nhỏ giữa các icon
             GestureDetector(
               onTap: () {
-                controller.jumpToTab(1);
+                PersistentNavBarNavigator.pushNewScreen(
+                  context,
+                  screen: LocationListScreen(),
+                  pageTransitionAnimation: PageTransitionAnimation.cupertino,
+                );
               },
               child:
                   _buildIconWithBackground('assets/topIcon2.png', 'Địa điểm'),
@@ -64,7 +70,11 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(width: 34), // Thêm khoảng cách nhỏ giữa các icon
             GestureDetector(
                 onTap: () {
-                  controller.jumpToTab(3);
+                  PersistentNavBarNavigator.pushNewScreen(
+                    context,
+                    screen: const GreenPointPage(),
+                    pageTransitionAnimation: PageTransitionAnimation.cupertino,
+                  );
                 },
                 child: _buildIconWithBackground(
                     'assets/topIcon3.png', 'Điểm Xanh')),

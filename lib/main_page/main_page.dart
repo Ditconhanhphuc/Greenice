@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:my_flutter_app/champion_page.dart';
+import 'package:my_flutter_app/green_point_page.dart';
 import 'package:my_flutter_app/home.dart';
-import 'package:my_flutter_app/location.dart';
 import 'package:my_flutter_app/main_page/contribute_tab.dart';
 import 'package:my_flutter_app/main_page/coupons_page.dart';
 import 'package:my_flutter_app/main_page/custom_nav_bar_widget.dart';
@@ -42,13 +43,13 @@ class _MainPageState extends State<MainPage> {
       context,
       screens: [
         const CustomNavBarScreen(screen: CouponsPage()),
-        CustomNavBarScreen(screen: LocationListScreen()),
+        const CustomNavBarScreen(screen: ChampionPage()),
         CustomNavBarScreen(
             screen: HomeScreen(
           controller: controller,
         )),
         CustomNavBarScreen(screen: ContributeTab()),
-        CustomNavBarScreen(screen: ContributeTab()),
+        const CustomNavBarScreen(screen: GreenPointPage()),
       ],
       itemCount: 5,
       navBarHeight: 80,
