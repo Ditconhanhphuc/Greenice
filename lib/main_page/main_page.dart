@@ -51,7 +51,7 @@ class _MainPageState extends State<MainPage> {
             screen: HomeScreen(
           controller: controller,
         )),
-        CustomNavBarScreen(screen: InformationForm()),
+        CustomNavBarScreen(screen: ContributeTab()),
         const CustomNavBarScreen(screen: GreenPointPage()),
       ],
       itemCount: 5,
