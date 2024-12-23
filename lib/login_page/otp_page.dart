@@ -96,13 +96,19 @@ class OtpPage extends StatelessWidget {
             ),
             onPressed: () {
               if (controller.text == '1234') {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (context) => const MainPage(),
-                ));
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                    builder: (context) => const MainPage(),
+                  ),
+                  (Route<dynamic> route) => false,
+                );
               } else {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (context) => const BrandPage(),
-                ));
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                    builder: (context) => const BrandPage(),
+                  ),
+                  (Route<dynamic> route) => false,
+                );
               }
             },
             child: const Text(

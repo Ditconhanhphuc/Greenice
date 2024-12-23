@@ -3,16 +3,17 @@ import 'dart:math';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:my_flutter_app/brand_coupon.dart';
 import 'package:my_flutter_app/brand_page/detail_voucher_widget.dart';
 
-class BarChartSample8 extends StatefulWidget {
-  const BarChartSample8({super.key});
+class VoucherPage extends StatefulWidget {
+  const VoucherPage({super.key});
 
   @override
   State<StatefulWidget> createState() => BarChartSample1State();
 }
 
-class BarChartSample1State extends State<BarChartSample8> {
+class BarChartSample1State extends State<VoucherPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,13 +64,20 @@ class BarChartSample1State extends State<BarChartSample8> {
                             padding: const EdgeInsets.only(right: 16, left: 28),
                             child: SvgPicture.asset('assets/icon_add.svg'),
                           ),
-                          const Text(
-                            'TẠO VOUCHER',
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xff1A451A),
-                                decoration: TextDecoration.underline),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => BrandVoucher(),
+                              ));
+                            },
+                            child: const Text(
+                              'TẠO VOUCHER',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xff1A451A),
+                                  decoration: TextDecoration.underline),
+                            ),
                           )
                         ],
                       ),

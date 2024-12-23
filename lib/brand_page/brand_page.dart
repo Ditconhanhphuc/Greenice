@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:my_flutter_app/brand_formEmp.dart';
 import 'package:my_flutter_app/brand_page/voucher_page.dart';
 
 class BrandPage extends StatelessWidget {
@@ -31,6 +32,7 @@ class BrandPage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 26,
                       color: Color(0xff245925),
+                      fontWeight: FontWeight.w700,
                       decoration: TextDecoration.none,
                     ),
                   ),
@@ -57,7 +59,7 @@ class BrandPage extends StatelessWidget {
                             behavior: HitTestBehavior.translucent,
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const BarChartSample8(),
+                                builder: (context) => const VoucherPage(),
                               ));
                             },
                             child: Column(
@@ -136,28 +138,36 @@ class BrandPage extends StatelessWidget {
                           ),
                         ),
                         Expanded(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Container(
-                                width: 75,
-                                height: 75,
-                                padding: const EdgeInsets.all(8),
-                                decoration: BoxDecoration(
-                                  color: const Color(
-                                    0xff2EAD04,
+                          child: GestureDetector(
+                            behavior: HitTestBehavior.translucent,
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => InformationForm(),
+                              ));
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Container(
+                                  width: 75,
+                                  height: 75,
+                                  padding: const EdgeInsets.all(8),
+                                  decoration: BoxDecoration(
+                                    color: const Color(
+                                      0xff2EAD04,
+                                    ),
+                                    borderRadius: BorderRadius.circular(20),
                                   ),
-                                  borderRadius: BorderRadius.circular(20),
+                                  child: SvgPicture.asset('assets/manager.svg'),
                                 ),
-                                child: SvgPicture.asset('assets/manager.svg'),
-                              ),
-                              const Text(
-                                'Quản lý',
-                                style: TextStyle(
-                                  fontSize: 15,
+                                const Text(
+                                  'Quản lý',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ],
