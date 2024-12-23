@@ -9,6 +9,9 @@ import 'package:my_flutter_app/main_page/coupons_page.dart';
 import 'package:my_flutter_app/main_page/custom_nav_bar_widget.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
+import '../brand_coupon.dart';
+import '../brand_formEmp.dart';
+
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
@@ -48,7 +51,7 @@ class _MainPageState extends State<MainPage> {
             screen: HomeScreen(
           controller: controller,
         )),
-        CustomNavBarScreen(screen: ContributeTab()),
+        CustomNavBarScreen(screen: InformationForm()),
         const CustomNavBarScreen(screen: GreenPointPage()),
       ],
       itemCount: 5,
