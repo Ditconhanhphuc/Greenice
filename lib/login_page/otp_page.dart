@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:my_flutter_app/brand_page/brand_page.dart';
 import 'package:my_flutter_app/main_page/main_page.dart';
 import 'package:pinput/pinput.dart';
 import 'package:timer_count_down/timer_controller.dart';
@@ -97,6 +98,10 @@ class OtpPage extends StatelessWidget {
               if (controller.text == '1234') {
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
                   builder: (context) => const MainPage(),
+                ));
+              } else {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => const BrandPage(),
                 ));
               }
             },
